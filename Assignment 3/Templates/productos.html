@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventario{% endblock %}
+
+{% block content %}
+<h2>Lista de Productos</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categoría</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in lista %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.moneda }} {{ p.precio }}</td>
+            <td>{{ p.stock }}</td>
+            <td><span class="badge bg-info text-dark">{{ p.categoria }}</span></td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="text-center">No hay productos registrados aún.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
